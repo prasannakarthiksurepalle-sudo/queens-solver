@@ -34,8 +34,8 @@ function App() {
         <header className="hero">
           <div className="brand-mark" aria-hidden="true">♛</div>
           <div className="hero-copy">
-            <p className="eyebrow">N-QUEENS PUZZLE</p>
-            <h1>Queens Solver</h1>
+            <p className="eyebrow">QUEENS PUZZLE</p>
+            <h1>Queens Puzzle Solver</h1>
             <p className="subtitle">
               Build your board, choose a color, and place your queens with precision.
             </p>
