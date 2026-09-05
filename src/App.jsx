@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Board from "./components/Board";
 import ColorPalette from "./components/ColorPalette";
+import validateBoard from "./validators/boardValidator";
 import "./App.css";
 
 function App() {
@@ -8,6 +9,8 @@ function App() {
   const [board, setBoard] = useState([]);
 
   const [selectedColor, setSelectedColor] = useState(0);
+
+  const [validation, setValidation] = useState(null);
 
   const createBoard = () => {
     const safeSize = Math.min(20, Math.max(5, Number(size) || 5));
@@ -20,6 +23,7 @@ function App() {
 
     setBoard(newBoard);
     setSelectedColor(0);
+    setValidation(null);
   };
 
   const paintCell = (row, col) => {
@@ -33,14 +37,21 @@ function App() {
   };
 
   const resetBoard = () => {
-  if (board.length === 0) return;
+    if (board.length === 0) return;
 
-  const emptyBoard = Array.from({ length: size }, () =>
-    Array(size).fill(null)
-  );
+    const emptyBoard = Array.from({ length: size }, () =>
+      Array(size).fill(null)
+    );
 
-  setBoard(emptyBoard);
-};
+    setBoard(emptyBoard);
+    setValidation(null);
+  };
+
+  const handleValidate = () => {
+    const result = validateBoard(board, size);
+
+    setValidation(result);
+  };
 
   return (
     <main className="app">
@@ -310,6 +321,27 @@ function App() {
                 Reset board
                 </button>
 
+                <button
+                  className="primary-button"
+                  onClick={handleValidate}
+                >
+                  Validate regions
+                </button>
+
+                {validation && (
+                  <div
+                    className={`validation-message ${
+                      validation.valid ? "validation-success" : "validation-error"
+                    }`}
+                  >
+                    <span className="validation-icon">
+                      {validation.valid ? "✓" : "!"}
+                    </span>
+
+                    <span>{validation.message}</span>
+                  </div>
+                )}
+
               </div>
 
               <div className="tip">
@@ -320,7 +352,7 @@ function App() {
                 
                   Paint every cell using exactly {size} region colors.
                   Each region must form one connected area.
-                  
+
                 </span>
 
               </div>

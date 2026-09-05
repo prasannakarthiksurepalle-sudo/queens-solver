@@ -790,9 +790,17 @@
 
 .board-actions {
   display: flex;
+
   justify-content: flex-end;
+  align-items: center;
+
+  gap: 10px;
 
   margin-top: 16px;
+}
+
+.validate-button {
+  min-height: 40px;
 }
 
 .secondary-button {
@@ -833,6 +841,74 @@
 .secondary-button:active {
   transform: translateY(0);
 }
+
+/* ========================================
+   VALIDATION MESSAGE
+======================================== */
+
+.validation-message {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 12px;
+
+  padding: 12px 14px;
+
+  border: 1px solid;
+
+  border-radius: 12px;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.validation-icon {
+  width: 22px;
+  height: 22px;
+
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 22px;
+
+  border-radius: 50%;
+
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.validation-success {
+  border-color: #cce9df;
+
+  color: #397365;
+
+  background: #f3fbf8;
+}
+
+.validation-success .validation-icon {
+  color: #29715f;
+
+  background: #dff4ed;
+}
+
+.validation-error {
+  border-color: #f0d4d4;
+
+  color: #9a5050;
+
+  background: #fff7f7;
+}
+
+.validation-error .validation-icon {
+  color: #a84c4c;
+
+  background: #fbe3e3;
+}
+
+
 /* ========================================
    TIP
 ======================================== */
