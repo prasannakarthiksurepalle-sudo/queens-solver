@@ -1252,17 +1252,16 @@
   position: relative;
   display: grid;
   place-items: center;
+  font-size: clamp(10px, 2.5vmin, 30px);
 }
 
 .queen {
   position: relative;
   z-index: 2;
   color: #202638;
-  font-size: clamp(16px, 2.5vw, 34px);
+  font-size: 0.8em;
   line-height: 1;
   pointer-events: none;
-  filter:
-  drop-shadow(0 1px 1px rgba(255, 255, 255, 0.7));
 }
 
 .validation-success,
