@@ -4,6 +4,13 @@ A web-based Queens puzzle builder and solver inspired by the LinkedIn Queens puz
 
 Create your own custom puzzle by defining colored regions on an N × N board, validate the board structure, and solve the puzzle automatically using a backtracking algorithm.
 
+
+## Live Link
+ 
+
+
+[**Try Queens Puzzle Builder & Solver →**](https://queens-solver-sigma.vercel.app/)
+
 ## Features
 
 - Custom board sizes from **5 × 5 to 20 × 20**
