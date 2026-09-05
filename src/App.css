@@ -173,3 +173,16 @@ button:focus-visible, input:focus-visible {
 .cell.region-17 { background-color: #073B4C; }
 .cell.region-18 { background-color: #8AC926; }
 .cell.region-19 { background-color: #FFCA3A; }
+
+.board {
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.cell {
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
