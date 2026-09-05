@@ -130,7 +130,7 @@ function App() {
         )}
 
         <footer className="app-footer">
-          <span>N-Queens Playground</span>
+          <span>Queens Playground</span>
           <span>•</span>
           <span>{size} queens</span>
         </footer>
