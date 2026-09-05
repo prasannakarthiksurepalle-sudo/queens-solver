@@ -1,0 +1,150 @@
+.app {
+  min-height: 100vh;
+  padding: 40px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.controls input {
+  width: 70px;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.controls button {
+  padding: 9px 16px;
+  cursor: pointer;
+}
+
+.palette {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.color-button {
+  width: 32px;
+  height: 32px;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.color-button.selected {
+  border-color: black;
+  transform: scale(1.15);
+}
+
+.board {
+  width: min(80vw, 700px);
+  aspect-ratio: 1;
+  margin: 0 auto;
+
+  display: grid;
+
+  border: 2px solid black;
+}
+
+.cell {
+  min-width: 0;
+  min-height: 0;
+
+  border: 1px solid #999;
+  background-color: white;
+
+  cursor: pointer;
+}
+
+.cell.region-0 {
+  background-color: #FF6B6B;
+}
+
+.cell.region-1 {
+  background-color: #4D96FF;
+}
+
+.cell.region-2 {
+  background-color: #6BCB77;
+}
+
+.cell.region-3 {
+  background-color: #FFD93D;
+}
+
+.cell.region-4 {
+  background-color: #B983FF;
+}
+
+.cell.region-5 {
+  background-color: #FF9F1C;
+}
+
+.cell.region-6 {
+  background-color: #00C2A8;
+}
+
+.cell.region-7 {
+  background-color: #F15BB5;
+}
+
+.cell.region-8 {
+  background-color: #845EC2;
+}
+
+.cell.region-9 {
+  background-color: #2EC4B6;
+
+}
+
+.cell.region-10 {
+  background-color: #FF8066;
+}
+
+.cell.region-11 {
+  background-color: #3A86FF;
+}
+
+.cell.region-12 {
+  background-color: #8338EC;
+}
+
+.cell.region-13 {
+  background-color: #FF006E;
+}
+
+.cell.region-14 {
+  background-color: #06D6A0;
+}
+
+.cell.region-15 {
+  background-color: #118AB2;
+}
+
+.cell.region-16 {
+  background-color: #EF476F;
+}
+
+.cell.region-17 {
+  background-color: #073B4C;
+}
+
+.cell.region-18 {
+  background-color: #8AC926;
+}
+
+.cell.region-19 {
+  background-color: #FFCA3A;
+}
