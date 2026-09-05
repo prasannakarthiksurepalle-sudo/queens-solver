@@ -2,6 +2,7 @@ import { useState } from "react";
 import Board from "./components/Board";
 import ColorPalette from "./components/ColorPalette";
 import validateBoard from "./validators/boardValidator";
+import solveQueens from "./solver/queensSolver";
 import "./App.css";
 
 function App() {
@@ -11,6 +12,10 @@ function App() {
   const [selectedColor, setSelectedColor] = useState(0);
 
   const [validation, setValidation] = useState(null);
+
+  const [isValidated, setIsValidated] = useState(false);
+
+  const [solution, setSolution] = useState(null);
 
   const createBoard = () => {
     const safeSize = Math.min(20, Math.max(5, Number(size) || 5));
@@ -24,6 +29,9 @@ function App() {
     setBoard(newBoard);
     setSelectedColor(0);
     setValidation(null);
+
+    setIsValidated(false);
+    setSolution(null);
   };
 
   const paintCell = (row, col) => {
@@ -34,6 +42,10 @@ function App() {
 
       return newBoard;
     });
+
+    setIsValidated(false);
+    setValidation(null);
+    setSolution(null);
   };
 
   const resetBoard = () => {
@@ -45,13 +57,52 @@ function App() {
 
     setBoard(emptyBoard);
     setValidation(null);
+    setIsValidated(false);
+    setSolution(null);
   };
 
   const handleValidate = () => {
     const result = validateBoard(board, size);
 
     setValidation(result);
+
+     if (result.valid) {
+      setIsValidated(true);
+    } else {
+      setIsValidated(false);
+    }
   };
+
+  const handleSolve = () => {
+  const validationResult = validateBoard(board, size);
+
+  setValidation(validationResult);
+
+  if (!validationResult.valid) {
+    setSolution(null);
+    return;
+  }
+
+  const result = solveQueens(board);
+
+  if (result === null) {
+    setSolution(null);
+
+    setValidation({
+      valid: false,
+      message: "The board is valid, but no solution exists.",
+    });
+
+    return;
+  }
+
+  setSolution(result);
+
+  setValidation({
+    valid: true,
+    message: "Solution found.",
+  });
+};
 
   return (
     <main className="app">
@@ -307,32 +358,40 @@ function App() {
                   <Board
                     board={board}
                     paintCell={paintCell}
+                    solution={solution}
                   />
 
                 </div>
 
               </div>
               <div className="board-actions">
-
                 <button
                   className="secondary-button"
                   onClick={resetBoard}
                 >
-                Reset board
+                  Reset board
                 </button>
 
                 <button
-                  className="primary-button"
-                  onClick={handleValidate}
+                  className="primary-button board-action-button"
+                  onClick={isValidated ? handleSolve : handleValidate}
                 >
-                  Validate regions
+                  <span>
+                    {isValidated ? "Solve Puzzle" : "Validate Board"}
+                  </span>
+
+                  <span className="button-arrow" aria-hidden="true">
+                    →
+                  </span>
                 </button>
 
                 {validation && (
                   <div
-                    className={`validation-message ${
-                      validation.valid ? "validation-success" : "validation-error"
-                    }`}
+                    className={
+                      validation.valid
+                        ? "validation-success"
+                        : "validation-error"
+                    }
                   >
                     <span className="validation-icon">
                       {validation.valid ? "✓" : "!"}
@@ -341,7 +400,6 @@ function App() {
                     <span>{validation.message}</span>
                   </div>
                 )}
-
               </div>
 
               <div className="tip">

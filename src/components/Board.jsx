@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-function Board({ board, paintCell }) {
+function Board({ board, paintCell, solution }) {
   const isPainting = useRef(false);
   const paintedCells = useRef(new Set());
 
@@ -25,6 +25,15 @@ function Board({ board, paintCell }) {
     if (!isPainting.current) return;
 
     paint(row, col);
+  };
+
+  const hasQueen = (row, col) => {
+    if (!solution) return false;
+
+    return solution.some(
+        ([queenRow, queenCol]) =>
+        queenRow === row && queenCol === col
+    );
   };
 
   const stopPainting = () => {
@@ -74,7 +83,11 @@ function Board({ board, paintCell }) {
             }}
             data-row={rowIndex}
             data-col={colIndex}
-          />
+          >
+            {hasQueen(rowIndex, colIndex) && (
+              <span className="queen">♛</span>
+            )}
+          </button>
         ))
       )}
     </div>
