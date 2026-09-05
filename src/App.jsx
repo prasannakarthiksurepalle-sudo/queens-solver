@@ -32,6 +32,16 @@ function App() {
     });
   };
 
+  const resetBoard = () => {
+  if (board.length === 0) return;
+
+  const emptyBoard = Array.from({ length: size }, () =>
+    Array(size).fill(null)
+  );
+
+  setBoard(emptyBoard);
+};
+
   return (
     <main className="app">
       <div className="app-layout">
@@ -291,15 +301,26 @@ function App() {
                 </div>
 
               </div>
+              <div className="board-actions">
 
+                <button
+                  className="secondary-button"
+                  onClick={resetBoard}
+                >
+                Reset board
+                </button>
+
+              </div>
 
               <div className="tip">
 
                 <span className="tip-icon">i</span>
 
                 <span>
-                  Each cell can be recolored at any time. Create exactly
-                  {` ${size}`} connected regions to prepare the puzzle.
+                
+                  Paint every cell using exactly {size} region colors.
+                  Each region must form one connected area.
+                  
                 </span>
 
               </div>

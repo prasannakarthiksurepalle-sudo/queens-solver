@@ -784,7 +784,55 @@
     inset 0 0 0 2px rgba(255, 255, 255, 0.6);
 }
 
+/* ========================================
+   BOARD ACTIONS
+======================================== */
 
+.board-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 16px;
+}
+
+.secondary-button {
+  min-height: 40px;
+
+  padding: 0 16px;
+
+  border: 1px solid #dfe3ec;
+
+  border-radius: 10px;
+
+  color: #596278;
+
+  background: #ffffff;
+
+  cursor: pointer;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  transition:
+    background 140ms ease,
+    border-color 140ms ease,
+    color 140ms ease,
+    transform 140ms ease;
+}
+
+.secondary-button:hover {
+  border-color: #cfd4e0;
+
+  color: #3f4658;
+
+  background: #f7f8fb;
+
+  transform: translateY(-1px);
+}
+
+.secondary-button:active {
+  transform: translateY(0);
+}
 /* ========================================
    TIP
 ======================================== */
